@@ -27,6 +27,7 @@
                     <td>{{ item.ci }}</td>
                     <td>{{ item.cooperative }}</td>
                     <td>
+                        <button @click="clientVisits(item.id)" class="btn btn-info" style="margin-right: 15px;">Visitas</button>
                         <button @click="edit(item)" class="btn btn-dark" style="margin-right: 15px;">Editar</button>
                         <button @click="Eliminar(item.id)" class="btn btn-danger">Eliminar</button>
                     </td>
@@ -76,6 +77,9 @@ export default {
                 .catch(function (error) {
                     console.error(error);
                 });
+        },
+        clientVisits(id){
+            this.$router.push("/client/"+id+"/visits");
         },
         edit(item) {
             this.itemToEdit = Object.assign({}, item);

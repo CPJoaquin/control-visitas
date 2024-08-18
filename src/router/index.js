@@ -1,5 +1,6 @@
 import ClientView from '@/views/client/ClientView.vue';
 import HomeView from '@/views/HomeView.vue';
+import ClientVisitsView from '@/views/visit/ClientVisitsView.vue';
 import VisitView from '@/views/visit/VisitView.vue';
 import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
@@ -17,7 +18,12 @@ const routes = [
         path: '/visit',
         name: 'visit',
         component: VisitView
-    }
+    },
+    {
+        path: '/client/:id/visits',
+        name: 'client-isit',
+        component: ClientVisitsView
+      }
 ];
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),

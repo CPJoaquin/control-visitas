@@ -13,11 +13,22 @@
       "cooperative": "COOP LCS"
     },
     {
-      "nombre": "",
-      "ci": "99991",
-      "cooperative": "cantanteedited",
-      "name": "sebastian editado",
+      "name": "ana suarez",
+      "ci": "5678455",
+      "cooperative": "elemprendedor",
+      "id": 3
+    },
+    {
+      "name": "SUSANA OLMOS",
+      "ci": "3334445",
+      "cooperative": "KINGK",
       "id": 4
+    },
+    {
+      "name": "ARMANDO CALLES",
+      "ci": "9090909",
+      "cooperative": "CONSTRUCTOR",
+      "id": 5
     }
   ],
   "visits": [
@@ -58,10 +69,28 @@
       }
     },
     {
-      "date": "2024-08-06",
-      "reason": "ver instalaciones",
+      "date": "2024-08-14",
+      "reason": "ver a los empleados",
+      "clientsId": 2,
+      "id": 8
+    },
+    {
+      "date": "2024-08-12",
+      "reason": "DESCONOCIDO",
+      "clientsId": 5,
+      "id": 9
+    },
+    {
+      "date": "2024-08-18",
+      "reason": "NO DELCARADO",
+      "clientsId": 3,
+      "id": 10
+    },
+    {
+      "date": "2024-08-16",
+      "reason": "reclamos",
       "clientsId": 4,
-      "id": 7
+      "id": 11
     }
   ]
 }
