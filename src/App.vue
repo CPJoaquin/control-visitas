@@ -1,15 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Menu>
+    <router-link to="/">Home</router-link>
+    <router-link to="/client">Clientes</router-link>
+  </Menu>
+  <router-view />
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {mapGetters } from 'vuex'
+import Menu from './components/Menu.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+
+    }
+  },
   components: {
-    HelloWorld
+    Menu
+  },
+  methods: {
+  },
+  computed: {
+    ...mapGetters(['rol'])
   }
 }
 </script>
