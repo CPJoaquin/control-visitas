@@ -22,40 +22,46 @@
   ],
   "visits": [
     {
-      "id": 1,
-      "client_id": 1,
-      "date": "2024-07-01",
-      "reason": "venta de productos"
-    },
-    {
-      "id": 2,
-      "client_id": 2,
-      "date": "2024-07-01",
-      "reason": "otros tratos"
-    },
-    {
-      "id": 3,
-      "client_id": 2,
+      "id": 4,
+      "clientsId": 2,
       "date": "2024-07-04",
       "reason": "consultas varias"
     },
     {
       "id": 4,
-      "client_id": 1,
+      "clientsId": 1,
       "date": "2024-07-07",
       "reason": "venta de productos"
     },
     {
       "id": 5,
-      "client_id": 3,
-      "date": "2024-07-03",
-      "reason": "venta de productos"
+      "clientsId": 2,
+      "date": "2024-07-06",
+      "reason": "venta de productos",
+      "clients": {
+        "id": 2,
+        "name": "BENITO JUAREZ",
+        "ci": "7654331",
+        "cooperative": "COOP LCS"
+      }
     },
     {
       "id": 6,
-      "client_id": 1,
+      "clientsId": 1,
       "date": "2024-07-11",
-      "reason": "tratos"
+      "reason": "tratos de cooperacion",
+      "clients": {
+        "id": 1,
+        "name": "JUAN PEREZ",
+        "ci": "1234567",
+        "cooperative": "SIGLO XX"
+      }
+    },
+    {
+      "date": "2024-08-06",
+      "reason": "ver instalaciones",
+      "clientsId": 4,
+      "id": 7
     }
   ]
 }

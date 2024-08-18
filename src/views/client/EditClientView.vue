@@ -63,9 +63,9 @@ export default {
 
     submitForm() {
       if (this.validateForm()) {
-        // Enviar los datos al servidor
+       
         this.save();
-        // Reiniciar el formulario
+       
       }
     },
     save() {
@@ -83,7 +83,7 @@ export default {
     }
   },
   computed: {
-    // propiedades computadas que dependen de otras propiedades reactivas
+   
     ...mapState(['count']),
     ...mapGetters(['doubleCount', 'getBaseUrl']),
     baseUrl() {

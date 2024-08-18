@@ -1,12 +1,12 @@
 <template>
     <div>
         <Modal v-model:modelValue="showModalNuevo">
-            <RegisterClientView @on-register="onRegister($event)" />
+            <RegisterVisitView @on-register="onRegister($event)" />
         </Modal>
         <Modal v-model:modelValue="showModalEdit">
-            <EditClientView @on-update="onUpdate($event)" :item="itemToEdit" />
+            <EditVisitView @on-update="onUpdate($event)" :item="itemToEdit" />
         </Modal>
-        <h1>Lista de Clientes</h1>
+        <h1>Lista de Visitas</h1>
         <button @click="showModalNuevo = true" class="btn btn-primary">Nuevo</button>
         <button @click="buscar()" class="btn btn-lith" style="float:right">Buscar</button>
         <input type="search" style="float:right" v-model="textToSearch" placeholder="Buscar" @search="buscar()">
@@ -15,17 +15,17 @@
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
-                    <th>Ci</th>
-                    <th>Empresa</th>
+                    <th>Fecha</th>
+                    <th>Motivo</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(item, index) in itemList" :key="index">
                     <td>{{ 1 + index }}</td>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.ci }}</td>
-                    <td>{{ item.cooperative }}</td>
+                    <td>{{ item.clients ? item.clients.name : '??' }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.reason }}</td>
                     <td>
                         <button @click="edit(item)" class="btn btn-dark" style="margin-right: 15px;">Editar</button>
                         <button @click="Eliminar(item.id)" class="btn btn-danger">Eliminar</button>
@@ -34,21 +34,21 @@
             </tbody>
         </table>
     </div>
-</template>
+  </template>
   
-<script>
-import { mapState, mapGetters, mapActions } from 'vuex'
-import Modal from '../../components/Modal.vue'
-import RegisterClientView from './RegisterClientView.vue'
-import EditClientView from './EditClientView.vue'
-
-export default {
-    name: 'ClientC',
+  <script>
+  import { mapState, mapGetters, mapActions } from 'vuex'
+  import Modal from '../../components/Modal.vue'
+  import RegisterVisitView from './RegisterVisitView.vue'
+  import EditVisitView from './EditVisitView.vue'
+  
+  export default {
+    name: 'VisitC',
     data() {
         return {
             message: 'Hola Mundo',
             currentPage: 1,
-            totalPages: 100,
+            totalPages: 100, 
             showModalNuevo: false,
             showModalEdit: false,
             itemToEdit: null,
@@ -57,20 +57,22 @@ export default {
         }
     },
     components: {
+        
         Modal,
-        RegisterClientView,
-        EditClientView
+        RegisterVisitView,
+        EditVisitView
     },
     methods: {
+        
         ...mapActions(['increment']),
         getList() {
             const vm = this;
-            let string_clients = "/clients";
+            let string_visits = "/visits?_expand=clients&_sort=date&_order=asc";
             if(this.textToSearch != ''){
-                string_clients = "/clients?q=" + this.textToSearch;
+                string_visits = "/visits?_expand=clients&_sort=date&_order=asc&q=" + this.textToSearch;
             }
-            this.axios.get(this.baseUrl + string_clients)
-                .then(function (response) {                    
+            this.axios.get(this.baseUrl + string_visits)
+                .then(function (response) {                                    
                     vm.itemList = response.data;
                 })
                 .catch(function (error) {
@@ -84,7 +86,7 @@ export default {
         Eliminar(id) {
             if (confirm("¿Esta Seguro de eliminar el registro?")) {
                 const vm = this;
-                this.axios.delete(this.baseUrl + "/clients/" + id)
+                this.axios.delete(this.baseUrl + "/visits/" + id)
                     .then(function (response) {
                         console.log(response);
                         vm.getList();
@@ -93,24 +95,23 @@ export default {
                         console.error(error);
                     });
             }
-
+  
         },
         buscar() {
             this.getList();
         },
         onRegister() {
-            console.log("on register");
             this.getList();
             this.showModalNuevo = false;
         },
         onUpdate() {
-            console.log("on update");
             this.getList();
             this.showModalEdit = false;
             this.itemToEdit = null;
         }
     },
     computed: {
+        
         ...mapState(['count']),
         ...mapGetters(['doubleCount', 'getBaseUrl']),
         baseUrl() {
@@ -118,12 +119,13 @@ export default {
         }
     },
     props: {
+        
     },
     mounted() {
         this.getList();
     },
-    emits: []
-}
-</script>
+    emits: [] 
+  }
+  </script>
   
-<style></style>
+  <style></style>

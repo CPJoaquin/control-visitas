@@ -2,6 +2,7 @@
     <Menu>
     <router-link to="/">Home</router-link>
     <router-link to="/client">Clientes</router-link>
+    <router-link to="/visit">Visitas</router-link>
   </Menu>
   <router-view />
 </template>

@@ -6,4 +6,5 @@ Nombre(s) de integrante(s):
 Pasos para iniciar el proyecto
 1) npm install
 2) npm run serve
-3) json-server --watch db.json --port 4000  (ejecutar en una consola diferente)
+- (ejecutar en una consola diferente)
+3) json-server --watch db.json --port 4000
